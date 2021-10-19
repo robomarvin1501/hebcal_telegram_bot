@@ -5,7 +5,7 @@ import json, datetime
 bot = telebot.TeleBot(TOKEN)
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, "I'm a hebrew calendar reminder bot!\nQuick warning for you, I'm still in alpha, "
                                       "so not everything yet exists, and some things are probably a little broken.\n"
@@ -55,7 +55,7 @@ def add_reminder(message):
         json.dump(greg_json_for_person, f)
 
 
-@bot.message_handler(commands=["/help"])
+@bot.message_handler(commands=["help"])
 def send_help(message):
     bot.send_message(message.chat.id, "A help message!\n"
                                       "My current commands and their usage:\n"
@@ -64,7 +64,7 @@ def send_help(message):
                                       "/add_date <when> <who> <what> => Add a reminder, on the set date, for the set "
                                       "person, reminding for the set what. Dates are of the format DD/MM, "
                                       "month 01 = Nisan.\n"
-                                      "EXAMPLE: /add_date 14/03 Smith birthday"
+                                      "EXAMPLE: /add_date 14/03 Smith birthday.\n"
                                       "Leap dates are currently NOT supported")
 
 
