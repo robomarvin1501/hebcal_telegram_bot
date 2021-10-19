@@ -64,6 +64,7 @@ def send_help(message):
                                       "/add_date <when> <who> <what> => Add a reminder, on the set date, for the set "
                                       "person, reminding for the set what. Dates are of the format DD/MM, "
                                       "month 01 = Nisan.\n"
+                                      "EXAMPLE: /add_date 14/03 Smith birthday"
                                       "Leap dates are currently NOT supported")
 
 
