@@ -7,8 +7,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
-    # bot.reply_to(message, "This is a hebrew calendar reminders bot")
-    bot.send_message(message.chat.id_file, "This is a hebrew calendar reminders bot")
+    bot.send_message(message.chat.id, "This is a hebrew calendar reminders bot")
 
 
 @bot.message_handler(commands=["add_date"])
