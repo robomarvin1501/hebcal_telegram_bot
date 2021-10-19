@@ -7,7 +7,17 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
-    bot.send_message(message.chat.id, "This is a hebrew calendar reminders bot")
+    bot.send_message(message.chat.id, "I'm a hebrew calendar reminder bot!\nQuick warning for you, I'm still in alpha, "
+                                      "so not everything yet exists, and some things are probably a little broken.\n"
+                                      "May I recommend that if any of this data is important, please put it somewhere "
+                                      "else as well?\n\n"
+                                      "To business. I send reminders at 0900 (Current Israel time) on the day of a "
+                                      "reminder (night before reminders hopefully coming soon).\n"
+                                      "For assistance on how to set a reminder, and other commands which will be added "
+                                      "soon, please type /help.\n"
+                                      "You can see this message again by typing /start.\n"
+                                      "Leap dates are currently NOT supported")
+
 
 
 @bot.message_handler(commands=["add_date"])
@@ -43,6 +53,18 @@ def add_reminder(message):
 
     with open(f"data_gregorian/{message.chat.id}.json", 'w') as f:
         json.dump(greg_json_for_person, f)
+
+
+@bot.message_handler(commands=["/help"])
+def send_help(message):
+    bot.send_message(message.chat.id, "A help message!\n"
+                                      "My current commands and their usage:\n"
+                                      "/start    => See the start message and explanation.\n"
+                                      "/help     => See this message.\n"
+                                      "/add_date <when> <who> <what> => Add a reminder, on the set date, for the set "
+                                      "person, reminding for the set what. Dates are of the format DD/MM, "
+                                      "month 01 = Nisan.\n"
+                                      "Leap dates are currently NOT supported")
 
 
 def get_next_gregorian_dates(hebrew_date):
